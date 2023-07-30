@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<br></br>
+<form action="http://localhost:8181/scrabble/v1/input" ,id="form" , method="post">
+    <label for="word">Input Word:</label><br>
+    <input type="text" id="word" name="word" maxlength="10" required><br>
+    <br></br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+</form>
+<br></br>
+
+<form action="http://localhost:8181/scrabble/v1/save" , method="post">
+    <input type="submit" value="Save Scores">
+</form>
+<br></br>
+
+<form action="http://localhost:8181/scrabble/v1/get_top_ten" , method="get">
+     <input type="submit" value="View Top Scores">
+</form>
+
+<style>
+    body {background-color:lightblue; text-align: center};
+</style>
+
+</body>
+
+</html>
