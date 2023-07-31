@@ -1,5 +1,6 @@
 package com.amrit.org.scrabble.scrabble;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,15 +19,25 @@ public class ScrabbleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    private ResultMatcher resultMatcher;
 
 
- /*   @Test
+    @Test
+    @DisplayName("Test english letters")
     void testCalculateScore() throws Exception {
 
-        resultMatcher = result -> mockMvc.perform(post("/scrabble/v1/input/?word=gudu")
+        mockMvc.perform(post("/scrabble/v1/input/?word=exciting")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
-                .andExpect(jsonPath("$['response'].score", is("1" )));
-    }*/
+                .andExpect(content().string("{\"id\":0,\"word\":\"EXCITING\",\"score\":18}"));
+    }
+
+    @Test
+    @DisplayName("Test Non characters")
+    void testCalculateScore_Non_Characters() throws Exception {
+
+        mockMvc.perform(post("/scrabble/v1/input/?word=468gfug")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(200))
+                .andExpect(content().string("{\"id\":0,\"word\":\"468GFUG\",\"score\":0}"));
+    }
 }
